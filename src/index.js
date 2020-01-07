@@ -2,6 +2,10 @@ import _ from 'lodash';
 import './style.css';
 import Icon from './webpack.png';
 import Data from './data.xml'
+  
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+
 console.log(Data);
 import printMe from './print.js';
 printMe();
@@ -27,3 +31,10 @@ function component() {
   }
   
   document.body.appendChild(component());
+
+
+  ReactDOM.render(
+    <div>This is render from react Dom</div>
+    ,
+    document.getElementById("reactapp"),
+);

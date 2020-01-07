@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path');// just to manipulate path
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
@@ -16,6 +16,7 @@ module.exports = {
     new HtmlWebpackPlugin({
 
       title: 'Output Management',
+      template: 'src/index.html',
 
     }),
 
@@ -37,7 +38,6 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader',// npm install --save-dev file-loader 
-          //'url-loader?limit=100000',// npm install --save-dev file-loader
         ],
       },
       {
@@ -52,6 +52,16 @@ module.exports = {
         use: [
           'xml-loader',
         ],
+      },
+      {
+        test: /\.(js)$/,
+        exclude: /(node_modules|bower_components)/,//this excludes the node_modules
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env']
+          }
+        }
       },
     ],
    },
